@@ -1,9 +1,18 @@
-import goalLogo from '../assets/goal.jpg'
+import { FC, ReactNode } from 'react';
 
-const Header = () => {
+type ImageProps = {
+  image: {
+    src: string,
+    alt: string;
+  },
+  children: ReactNode
+}
+
+const Header: FC<ImageProps> = ({image, children}) => {
   return (
     <header>
-      <img src={goalLogo} alt="header logo" />
+      <img src={image.src} alt={image.alt} />
+      {children}
     </header>
   )
 }
