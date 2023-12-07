@@ -13,7 +13,6 @@ function App() {
   }
 
   const [goals, setGoals] = useState<CourseGoals[]>([])
-  
 
   const onAddGoal = (title: string, description: string) => {
     setGoals((prev) => {
@@ -26,6 +25,11 @@ function App() {
     })
   }
 
+  const deleteGoalHandler = (id: number) => {
+    setGoals((prev) => {
+      return prev.filter(goal => goal.id !== id)
+    })
+  }
 
   return (
     <main>
@@ -33,7 +37,7 @@ function App() {
         <h1>The Header</h1>
       </Header>
       <AddGoal handleAddGoal={onAddGoal} />
-      <Goal goals={goals} />
+      <Goal goals={goals}  onDeleteGoal={deleteGoalHandler}/>
     </main>
   );
 }
